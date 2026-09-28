@@ -1,0 +1,39 @@
+{
+ "name": "06_save_and_update_db",
+ "planner": "cloud-qwen3-vl-plus",
+ "grounder": "cloud-qwen3-vl-plus",
+ "max_total_s": 1500,
+ "task": "In 1C Configurator: the extension 'api' (tab 'Api *' at the bottom) has unsaved changes. Save it and update the database configuration so the changes are applied (the user has approved this).",
+ "rules": "Do not change or delete any objects. Work only with the extension 'Api'. When 1C asks 'Сохранить изменения?' or shows a list of changes with a button 'Принять', confirm with 'Да' / 'Принять'. Never click 'Удалить'.",
+ "subgoals": [
+  {
+   "goal": "Click the button 'OK' in the message 'Сохранение конфигурации в файл ... завершено'.",
+   "check": "No message box with the text 'Сохранение конфигурации в файл' is visible.",
+   "max_steps": 3
+  },
+  {
+   "goal": "Activate the extension window: click the tab 'Api *' at the bottom-left of the Configurator window (in the task bar of open windows, just above the status bar).",
+   "check": "The tree of the extension 'api' (root node 'api') is visible and active, or the bottom tab 'Api *' is highlighted as the active window.",
+   "ground_crop": [
+    0,
+    900,
+    600,
+    1040
+   ],
+   "max_steps": 3,
+   "settle_s": 1.5
+  },
+  {
+   "goal": "Open the main menu 'Конфигурация' (4th item of the top menu bar: Файл, Правка, Текст, Конфигурация ...) and click 'Обновить конфигурацию базы данных'. If 1C asks whether to save changes, answer 'Да'. If a window with a list of changes and a button 'Принять' appears, click 'Принять'.",
+   "check": "The bottom tab reads 'Api' WITHOUT an asterisk, or a message says the update is completed, and no dialog asking a question is open.",
+   "ground_crop": [
+    0,
+    30,
+    900,
+    700
+   ],
+   "max_steps": 8,
+   "settle_s": 4.0
+  }
+ ]
+}

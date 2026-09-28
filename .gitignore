@@ -1,0 +1,7 @@
+runs_rdp/
+*.png
+connect_log.txt
+config.yaml
+.env
+STOP
+__pycache__/

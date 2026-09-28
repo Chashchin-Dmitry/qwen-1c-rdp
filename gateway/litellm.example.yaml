@@ -1,0 +1,21 @@
+# LiteLLM gateway: one OpenAI-compatible endpoint on 127.0.0.1:4000 for the harness.
+# Keys come from environment variables and are never written here.
+model_list:
+  # Cloud: Qwen3-VL Plus in Alibaba Model Studio (DashScope, international endpoint).
+  - model_name: cloud-qwen3-vl-plus
+    litellm_params:
+      model: dashscope/qwen3-vl-plus
+      api_base: https://dashscope-intl.aliyuncs.com/compatible-mode/v1
+      api_key: os.environ/DASHSCOPE_API_KEY
+  # Local: the same family through Ollama. Needs enough VRAM (30B does not fit in 16 GB).
+  - model_name: local-qwen3-vl-30b
+    litellm_params:
+      model: ollama_chat/qwen3-vl:30b
+      api_base: http://127.0.0.1:11434
+  - model_name: local-qwen3-vl-8b
+    litellm_params:
+      model: ollama_chat/qwen3-vl:8b
+      api_base: http://127.0.0.1:11434
+
+general_settings:
+  master_key: os.environ/GATEWAY_KEY

@@ -1,0 +1,32 @@
+{
+ "name": "03_set_template_props",
+ "planner": "cloud-qwen3-vl-plus",
+ "grounder": "cloud-qwen3-vl-plus",
+ "max_total_s": 1200,
+ "task": "In 1C Configurator a new URL template 'ШаблонURL1' was just created (its name field may currently be empty) in HTTP service 'api_http' of the extension 'api', and its properties window 'Свойства: ШаблонURL1' is open. Set its name to api_test3p and its template string to /test3p. Do not save the configuration.",
+ "rules": "Work only in the properties window of the NEW URL template and in the right 'api' tree. Never rename or change demo_status, GET or other existing objects. Do not delete anything. Never press Ctrl+S or F7.",
+ "subgoals": [
+  {
+   "goal": "In the properties window 'Свойства: ШаблонURL1', set the field 'Имя' (it may be empty now) to api_test3p using the set_field action on the value cell to the right of the label 'Имя'.",
+   "check": "A properties window of a URL template shows the name api_test3p (in its title or in the 'Имя' field), or the right tree contains a node api_test3p.",
+   "allow_type": true,
+   "allowed_keys": [
+    "enter",
+    "ctrl+a",
+    "tab"
+   ],
+   "max_steps": 4
+  },
+  {
+   "goal": "In the same properties window (now for api_test3p), set the field 'Шаблон' to /test3p using the set_field action on the value cell to the right of the label 'Шаблон'.",
+   "check": "In the properties window of api_test3p the field 'Шаблон' contains /test3p.",
+   "allow_type": true,
+   "allowed_keys": [
+    "enter",
+    "ctrl+a",
+    "tab"
+   ],
+   "max_steps": 4
+  }
+ ]
+}

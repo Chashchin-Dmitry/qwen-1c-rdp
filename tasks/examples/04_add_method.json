@@ -1,0 +1,33 @@
+{
+ "name": "04_add_method",
+ "planner": "cloud-qwen3-vl-plus",
+ "grounder": "cloud-qwen3-vl-plus",
+ "max_total_s": 1200,
+ "task": "In 1C Configurator, extension 'api', HTTP service 'api_http': the new URL template 'api_test3p' exists. Add an HTTP method GET to it and create its handler procedure. Do not save the configuration.",
+ "rules": "Work only with the new URL template api_test3p, its new method and their property windows. Never change demo_status, GET of demo_status or other existing objects. Do not delete anything. Do not use the main menu.",
+ "subgoals": [
+  {
+   "goal": "RIGHT-CLICK on the tree node 'api_test3p' in the right window, then in the context menu click 'Добавить', and in its submenu click 'Метод'.",
+   "check": "A new HTTP method was added to api_test3p: a child node (like 'Метод1') under api_test3p in the tree, or a properties window titled like 'Свойства: Метод1'.",
+   "max_steps": 6,
+   "settle_s": 2.0
+  },
+  {
+   "goal": "In the properties window of the new method under api_test3p (named like 'Метод1'), set the field 'Имя' to GET using set_field on the value cell right of 'Имя'.",
+   "check": "The properties window of the new method under api_test3p shows name GET (title 'Свойства: GET' or field 'Имя' = GET) and it is the child of api_test3p.",
+   "allow_type": true,
+   "max_steps": 4
+  },
+  {
+   "goal": "Make sure the field 'HTTP-метод' of this method is GET. If it already shows GET, answer done. If not, click the dropdown of 'HTTP-метод' and choose GET.",
+   "check": "In the properties window of the method, the field 'HTTP-метод' shows GET.",
+   "max_steps": 4
+  },
+  {
+   "goal": "Create the handler: click the small magnifier button at the right end of the field 'Обработчик' in the method's properties window. 1C will create a new procedure and open the module.",
+   "check": "A code module editor is open showing a procedure whose name contains api_test3p (for example 'Функция api_test3pGET(Запрос)' or 'Процедура ...').",
+   "max_steps": 4,
+   "settle_s": 3.0
+  }
+ ]
+}

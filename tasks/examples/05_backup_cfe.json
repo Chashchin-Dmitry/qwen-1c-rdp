@@ -1,0 +1,51 @@
+{
+ "name": "05_backup_cfe",
+ "planner": "cloud-qwen3-vl-plus",
+ "grounder": "cloud-qwen3-vl-plus",
+ "max_total_s": 1500,
+ "task": "In 1C Configurator, make a backup file of the configuration extension 'api': export the extension to a .cfe file. Do not save or update the configuration itself.",
+ "rules": "Do not change any objects. Do not delete anything. Do not choose any menu item with the words 'Обновить', 'Удалить', 'Загрузить'. Only exporting the extension to a file is allowed.",
+ "subgoals": [
+  {
+   "goal": "Click the main menu item 'Конфигурация' in the top menu bar (the menu bar reads: Файл, Правка, Текст, Конфигурация, Отладка, Администрирование ...). A dropdown will open.",
+   "check": "A dropdown menu of 'Конфигурация' is open (it contains items like 'Открыть конфигурацию', 'Расширения конфигурации').",
+   "ground_crop": [
+    0,
+    30,
+    700,
+    90
+   ],
+   "max_steps": 3,
+   "settle_s": 1.5
+  },
+  {
+   "goal": "In the open dropdown menu click the item 'Расширения конфигурации'.",
+   "check": "A window titled 'Расширения конфигурации' is open with a list that contains 'api'.",
+   "ground_crop": [
+    0,
+    30,
+    900,
+    1000
+   ],
+   "max_steps": 3,
+   "settle_s": 2.0
+  },
+  {
+   "goal": "In the window 'Расширения конфигурации' select the row 'api' with a single click. The list can be long: if 'api' is not visible, scroll the table.",
+   "check": "In the window 'Расширения конфигурации' the row 'api' is selected (highlighted).",
+   "max_steps": 3
+  },
+  {
+   "goal": "Save the selected extension 'api' to a file: click the menu button 'Конфигурация' in the toolbar of the window 'Расширения конфигурации' (it is next to 'Действия', with a small arrow), then click 'Сохранить в файл...'.",
+   "check": "A Windows file save dialog is open (field 'Имя файла', button 'Сохранить').",
+   "ground_crop": [
+    0,
+    110,
+    700,
+    560
+   ],
+   "max_steps": 5,
+   "settle_s": 2.0
+  }
+ ]
+}

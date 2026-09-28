@@ -1,0 +1,20 @@
+{
+ "name": "01_open_method",
+ "planner": "cloud-qwen3-vl-plus",
+ "grounder": "cloud-qwen3-vl-plus",
+ "max_total_s": 900,
+ "task": "In 1C Configurator, in the separate window on the right that shows the tree of the configuration extension 'api', find the HTTP service 'api_http' and its URL template 'demo_status', and open the HTTP method of that template.",
+ "rules": "Work ONLY in the right window with the 'api' tree. Do not create, delete, rename or save anything. Do not press Ctrl+S. Do not use the search boxes.",
+ "subgoals": [
+  {
+   "goal": "Expand the URL template node 'demo_status' in the right window (click the small plus sign to the left of the demo_status icon) so that its child node (an HTTP method) becomes visible under it. If demo_status is not visible, scroll the right window.",
+   "check": "In the right window, directly under the node 'demo_status' there is at least one indented child node (an HTTP method, for example named GET or similar).",
+   "max_steps": 6
+  },
+  {
+   "goal": "Open the HTTP method that is the child of 'demo_status': double-click that child node.",
+   "check": "A properties window or editor for an HTTP method is now open on the screen (for example a window with 'Свойства' or fields like 'HTTP-метод', 'Обработчик').",
+   "max_steps": 6
+  }
+ ]
+}

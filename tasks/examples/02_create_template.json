@@ -1,0 +1,27 @@
+{
+ "name": "02_create_template",
+ "planner": "cloud-qwen3-vl-plus",
+ "grounder": "cloud-qwen3-vl-plus",
+ "max_total_s": 1200,
+ "task": "In 1C Configurator, in the window on the right with the tree of the configuration extension 'api', inside the HTTP service 'api_http', create a NEW URL template. Its name and template string are set by the next task. Do not save the configuration.",
+ "rules": "Work ONLY in the right window with the 'api' tree and in property windows ('Свойства: ...'). Never rename or change existing objects such as demo_status, GET or api_http. Do not delete anything. Never press Ctrl+S or F7. Do not use search boxes.",
+ "subgoals": [
+  {
+   "goal": "Select the URL template node 'demo_status' (NOT its child GET) in the right tree with a single click on the text 'demo_status'.",
+   "check": "In this tree the highlighted (blue selected) node is 'demo_status' itself, not 'GET'.",
+   "max_steps": 3
+  },
+  {
+   "goal": "Add a new URL template: RIGHT-CLICK on the tree node 'demo_status' in the right window to open its context menu. Then, in the context menu, click the item 'Добавить' (Add). If a submenu appears, choose the item for adding a URL template ('Шаблон URL').",
+   "check": "A new URL template has appeared: a new node like 'Шаблон1' in the right tree near demo_status, or a properties window titled like 'Свойства: Шаблон1', or a window for entering the new object's name.",
+   "max_steps": 6,
+   "settle_s": 2.0
+  }
+ ],
+ "verify_crop": [
+  660,
+  100,
+  1920,
+  760
+ ]
+}

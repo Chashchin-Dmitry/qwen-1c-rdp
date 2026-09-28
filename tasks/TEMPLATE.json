@@ -1,0 +1,30 @@
+{
+ "name": "my_task",
+ "planner": "cloud-qwen3-vl-plus",
+ "grounder": "cloud-qwen3-vl-plus",
+ "verifier": "cloud-qwen3-vl-plus",
+ "max_total_s": 900,
+ "task": "One or two sentences: what must be true in 1C Configurator at the end. Name the extension and objects exactly as they are shown on screen.",
+ "rules": "What the agent must never touch. Example: Work only in the extension 'api'. Do not delete anything. Do not save the configuration.",
+ "subgoals": [
+  {
+   "goal": "ONE visible step: which element, where on the screen, what to do with it (click / right-click / set_field). Describe the element by its text and position.",
+   "check": "What must be visible on the screenshot after the step. Something the verifier can see, for example a window title or a new node in the tree.",
+   "max_steps": 4,
+   "settle_s": 1.5
+  },
+  {
+   "goal": "Step that puts text into a field: use set_field on the value cell right of the label 'Имя' with the text my_name.",
+   "check": "The field 'Имя' shows my_name.",
+   "allow_type": true,
+   "max_steps": 4
+  },
+  {
+   "goal": "Step inside a menu: open the main menu 'Конфигурация' and click the item '...'.",
+   "check": "The window '...' is open.",
+   "ground_crop": [0, 30, 900, 700],
+   "verify_crop": [0, 30, 900, 700],
+   "max_steps": 4
+  }
+ ]
+}
